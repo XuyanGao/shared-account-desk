@@ -139,7 +139,7 @@
     var sel=el('member'),saved=sel.value||localStorage.getItem('team-selected-name')||'';
     if(Array.from(sel.options).slice(1).map(o=>o.value).join('|')!==state.members.join('|')){sel.replaceChildren();var placeholder=document.createElement('option');placeholder.value='';placeholder.textContent='请选择使用者';sel.appendChild(placeholder);state.members.forEach(n=>{var o=document.createElement('option');o.textContent=n;o.value=n;sel.appendChild(o)});if(state.members.includes(saved))sel.value=saved;}
     el('teamCount').textContent=state.members.length+' PEOPLE';
-    el('members').replaceChildren();state.members.forEach(n=>{var d=document.createElement('div');d.className='member';var dot=document.createElement('span');dot.className='dot';dot.textContent=n.slice(0,1);d.appendChild(dot);d.appendChild(document.createTextNode(n+(n==='王玥涵'?' · UK':'')));el('members').appendChild(d)});
+    el('members').replaceChildren();state.members.forEach(n=>{var d=document.createElement('div');d.className='member';var dot=document.createElement('span');dot.className='dot';dot.textContent=n.slice(0,1);d.appendChild(dot);d.appendChild(document.createTextNode(n));el('members').appendChild(d)});
     el('schedulePeriod').textContent=(state.nextWeek?'下周':'本周')+' · '+cnDate(state.weekStart)+' — '+cnDate(state.weekStart+6*24*60*60*1000);
     var root=el('schedule');root.replaceChildren();state.slots.forEach(s=>{
       var row=document.createElement('div');row.className='slot'+(Date.now()>=s.end?' past':Date.now()>=s.start?' current':'');
